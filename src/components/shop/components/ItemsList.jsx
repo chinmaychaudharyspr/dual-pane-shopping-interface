@@ -1,5 +1,10 @@
 import { useState, useCallback } from 'react';
 
+/**
+ * @param {0} isSelected -> flag which tell if an item is added to cart
+ * @param {1} onSelect -> callback which adds/remove an item to/from cart
+ * @param {2} item -> item object, stating details of items
+ */
 const Item = ({ isSelected, onSelect, item }) => {
   const _onSelect = useCallback(() => onSelect(item), [onSelect, item]);
 
@@ -29,6 +34,9 @@ const Item = ({ isSelected, onSelect, item }) => {
           {item.description}
         </p>
         <div className="flex justify-between items-end flex-1">
+          {/**
+           * button using which user can add/remove item to/from cart
+           */}
           <button
             className={`font-manrope text-lg leading-9 border px-2 rounded-xl ${
               isSelected
@@ -40,6 +48,7 @@ const Item = ({ isSelected, onSelect, item }) => {
           >
             {isSelected ? 'Remove' : 'Add to cart'}
           </button>
+
           <h6 className="text-indigo-600 font-manrope font-bold text-xl leading-9 text-right">
             ${item.price}
           </h6>
@@ -49,6 +58,9 @@ const Item = ({ isSelected, onSelect, item }) => {
   );
 };
 
+/**
+ * @param {0} list -> list of items in the online shop
+ */
 export const ItemsList = ({ list }) => {
   const [selectedItems, setSelectedItems] = useState([]);
 

@@ -1,3 +1,8 @@
+
+/**
+ * @param {0} selectedItems -> list of all the items added to the cart by user
+ * @param {1} onRemove -> callback which remove an item from cart
+ */
 export const Cart = ({ selectedItems = [], onRemove }) => {
   return (
     <div className="max-h-100 overflow-auto sticky top-2 flex border-2 border-gray-200 p-4 rounded-xl gap-2 w-full flex-col">
@@ -11,14 +16,18 @@ export const Cart = ({ selectedItems = [], onRemove }) => {
           >
             <div className="flex-none">{index + 1}.</div>
             <div className="flex-1">{item.name}</div>
+
+            {/**
+           * button using which user can remove item from cart
+           */}
             <button
               className="flex-none border border-rose-600 py-0.5 px-2 text-rose-600 rounded-xl h-8 flex items-center"
               onClick={() => onRemove(item)}
               data-testid={`remove-item-${index + 1}`}
             >
-              {' '}
               Remove
             </button>
+            
           </div>
         ))
       ) : (
