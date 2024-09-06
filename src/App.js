@@ -2,8 +2,6 @@ import React from 'react';
 
 import { Shop } from './components/shop';
 
-import './App.css';
-
 const ITEM_LIST = [
   {
     id: '4',
